@@ -4,6 +4,7 @@ public class WordFrequencyGame {
 
     public static final String REGEX = "\\s+";
     public static final String LINE_BREAK = "\n";
+    public static final String ERROR_MESSAGE = "Calculate Error";
 
     public String WordFrequency(String sentence) {
         if (sentence.split(REGEX).length == 1) {
@@ -34,7 +35,7 @@ public class WordFrequencyGame {
                 }
                 return joiner.toString();
             } catch (Exception e) {
-                return "Calculate Error";
+                return ERROR_MESSAGE;
             }
         }
     }
