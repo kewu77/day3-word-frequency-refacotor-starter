@@ -1,8 +1,11 @@
 import java.util.*;
 
 public class WordFrequencyGame {
+
+    public static final String REGEX = "\\s+";
+
     public String WordFrequency(String sentence) {
-        if (sentence.split("\\s+").length == 1) {
+        if (sentence.split(REGEX).length == 1) {
             return sentence + " 1";
         } else {
             try {
