@@ -7,10 +7,14 @@ public class WordFrequencyGame {
     public static final String LINE_BREAK = "\n";
     public static final String ERROR_MESSAGE = "Calculate Error";
     public static final String SPACE = " ";
+    public static final String SPECIAL_WORD = "";
 
     public String WordFrequency(String sentence) {
 
+
         try {
+            if(sentence.equals(SPECIAL_WORD))
+                return SPECIAL_WORD;
             //split the input string with 1 to n pieces of spaces
             List<WordFrequency> frequencies = getInitialWordFrequencies(sentence);
 
