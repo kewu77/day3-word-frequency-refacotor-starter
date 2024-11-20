@@ -9,22 +9,20 @@ public class WordFrequencyGame {
     public static final String SPACE = " ";
 
     public String WordFrequency(String sentence) {
-        if (sentence.split(REGEX).length == 1) {
-            return sentence + " 1";
-        } else {
-            try {
-                //split the input string with 1 to n pieces of spaces
-                List<WordFrequency> frequencies = getInitialWordFrequencies(sentence);
 
-                //get the map for the next step of sizing the same word
-                frequencies = getFrequencies(frequencies);
+        try {
+            //split the input string with 1 to n pieces of spaces
+            List<WordFrequency> frequencies = getInitialWordFrequencies(sentence);
 
-                return joinResult(frequencies);
+            //get the map for the next step of sizing the same word
+            frequencies = getFrequencies(frequencies);
 
-            } catch (Exception e) {
-                return ERROR_MESSAGE;
-            }
+            return joinResult(frequencies);
+
+        } catch (Exception e) {
+            return ERROR_MESSAGE;
         }
+
     }
 
     private String joinResult(List<WordFrequency> frequencies) {
@@ -45,7 +43,7 @@ public class WordFrequencyGame {
     private List<WordFrequency> getInitialWordFrequencies(String sentence) {
         String[] words = sentence.split(REGEX);
         return Arrays.stream(words).
-                map(word -> new WordFrequency(word,1)).
+                map(word -> new WordFrequency(word, 1)).
                 collect(Collectors.toList());
     }
 
