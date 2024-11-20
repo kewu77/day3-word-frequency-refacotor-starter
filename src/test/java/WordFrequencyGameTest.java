@@ -53,10 +53,18 @@ public class WordFrequencyGameTest {
         validate_Input_words_process_to_expected_word(inputStr, expectResult);
     }
 
+//    @Test
+//    public void should_error_with_invalid_input() throws Exception {
+//        //Given
+//        String inputStr = "";
+//        String expectResult = "Calculate Error";
+//        validate_Input_words_process_to_expected_word(inputStr, expectResult);
+//    }
+
     private void validate_Input_words_process_to_expected_word(String inputStr, String expectResult) {
         WordFrequencyGame game = new WordFrequencyGame();
         //When
-        String result = game.getResult(inputStr);
+        String result = game.WordFrequency(inputStr);
         //Then
         assertThat(result).isEqualTo(expectResult);
     }

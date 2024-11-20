@@ -3,6 +3,7 @@ import java.util.*;
 public class WordFrequencyGame {
 
     public static final String REGEX = "\\s+";
+    public static final String LINE_BREAK = "\n";
 
     public String WordFrequency(String sentence) {
         if (sentence.split(REGEX).length == 1) {
@@ -10,7 +11,7 @@ public class WordFrequencyGame {
         } else {
             try {
                 //split the input string with 1 to n pieces of spaces
-                String[] words = sentence.split("\\s+");
+                String[] words = sentence.split(REGEX);
                 List<WordFrequency> frequencies = new ArrayList<>();
                 for (String word : words) {
                     WordFrequency wordFrequency = new WordFrequency(word, 1);
@@ -26,7 +27,7 @@ public class WordFrequencyGame {
                 frequencies = wordFrequencies;
                 frequencies.sort((word, nextWord) -> nextWord.getWordCount() - word.getWordCount());
 
-                StringJoiner joiner = new StringJoiner("\n");
+                StringJoiner joiner = new StringJoiner(LINE_BREAK);
                 for (WordFrequency wordFrequency : frequencies) {
                     String wordDetail = wordFrequency.getWord() + " " + wordFrequency.getWordCount();
                     joiner.add(wordDetail);
