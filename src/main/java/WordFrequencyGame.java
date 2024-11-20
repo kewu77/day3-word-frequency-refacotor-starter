@@ -16,10 +16,7 @@ public class WordFrequencyGame {
                 List<WordFrequency> frequencies = getInitialWordFrequencies(sentence);
 
                 //get the map for the next step of sizing the same word
-                Map<String, List<WordFrequency>> wordToWordFrequency = getListMap(frequencies);
-                List<WordFrequency> wordFrequencies = new ArrayList<>();
-                wordToWordFrequency.forEach((key, value) -> wordFrequencies.add(new WordFrequency(key, value.size())));
-                frequencies = wordFrequencies;
+                frequencies = getFrequencies(frequencies);
 
                 return frequencies.stream().
                         sorted((word, nextWord) -> nextWord.getWordCount() - word.getWordCount()).
@@ -30,6 +27,14 @@ public class WordFrequencyGame {
                 return ERROR_MESSAGE;
             }
         }
+    }
+
+    private List<WordFrequency> getFrequencies(List<WordFrequency> frequencies) {
+        Map<String, List<WordFrequency>> wordToWordFrequency = getListMap(frequencies);
+        List<WordFrequency> wordFrequencies = new ArrayList<>();
+        wordToWordFrequency.forEach((key, value) -> wordFrequencies.add(new WordFrequency(key, value.size())));
+        frequencies = wordFrequencies;
+        return frequencies;
     }
 
     private List<WordFrequency> getInitialWordFrequencies(String sentence) {
