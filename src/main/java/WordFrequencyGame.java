@@ -18,15 +18,19 @@ public class WordFrequencyGame {
                 //get the map for the next step of sizing the same word
                 frequencies = getFrequencies(frequencies);
 
-                return frequencies.stream().
-                        sorted((word, nextWord) -> nextWord.getWordCount() - word.getWordCount()).
-                        map(wordFrequency -> wordFrequency.getWord() + " " + wordFrequency.getWordCount()).
-                        collect(Collectors.joining(LINE_BREAK));
+                return joinResult(frequencies);
 
             } catch (Exception e) {
                 return ERROR_MESSAGE;
             }
         }
+    }
+
+    private String joinResult(List<WordFrequency> frequencies) {
+        return frequencies.stream().
+                sorted((word, nextWord) -> nextWord.getWordCount() - word.getWordCount()).
+                map(wordFrequency -> wordFrequency.getWord() + " " + wordFrequency.getWordCount()).
+                collect(Collectors.joining(LINE_BREAK));
     }
 
     private List<WordFrequency> getFrequencies(List<WordFrequency> frequencies) {
