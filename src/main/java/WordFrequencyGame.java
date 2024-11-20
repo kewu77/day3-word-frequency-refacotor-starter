@@ -6,6 +6,7 @@ public class WordFrequencyGame {
     public static final String REGEX = "\\s+";
     public static final String LINE_BREAK = "\n";
     public static final String ERROR_MESSAGE = "Calculate Error";
+    public static final String SPACE = " ";
 
     public String WordFrequency(String sentence) {
         if (sentence.split(REGEX).length == 1) {
@@ -29,7 +30,7 @@ public class WordFrequencyGame {
     private String joinResult(List<WordFrequency> frequencies) {
         return frequencies.stream().
                 sorted((word, nextWord) -> nextWord.getWordCount() - word.getWordCount()).
-                map(wordFrequency -> wordFrequency.getWord() + " " + wordFrequency.getWordCount()).
+                map(wordFrequency -> wordFrequency.getWord() + SPACE + wordFrequency.getWordCount()).
                 collect(Collectors.joining(LINE_BREAK));
     }
 
