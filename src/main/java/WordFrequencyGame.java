@@ -25,14 +25,12 @@ public class WordFrequencyGame {
                     wordFrequencies.add(wordFrequency);
                 }
                 frequencies = wordFrequencies;
-                frequencies.sort((word, nextWord) -> nextWord.getWordCount() - word.getWordCount());
 
-                StringJoiner joiner = new StringJoiner(LINE_BREAK);
-                for (WordFrequency wordFrequency : frequencies) {
-                    String wordDetail = wordFrequency.getWord() + " " + wordFrequency.getWordCount();
-                    joiner.add(wordDetail);
-                }
-                return joiner.toString();
+                return frequencies.stream().
+                        sorted((word, nextWord) -> nextWord.getWordCount() - word.getWordCount()).
+                        map(wordFrequency -> wordFrequency.getWord() + " " + wordFrequency.getWordCount()).
+                        collect(Collectors.joining(LINE_BREAK));
+
             } catch (Exception e) {
                 return ERROR_MESSAGE;
             }
